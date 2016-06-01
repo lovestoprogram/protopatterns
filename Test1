@@ -1,5 +1,45 @@
-//A Style By Which Objects Can Be Passed And Deleted In A For Loop 
-//If it is useful and catches on, I would like to call it the can't touch this pattern
+//A Style By Which Objects Can Be Passed And Deleted In A Function
+//If it is useful and catches on, I would like to call it the "can't touch this" pattern 
+//      because it is a work around for the mistake I originally made of trying to do this: this = null.
+//
+//         These are all the pros and cons, and the reasoning behind them. Please 
+//         feel to add to the disadvantages or advantages.
+//
+//         Goal: To create a way by which objects can be passed to and deleted in a function.
+//         
+//Disadvantages:
+//     1.The programmer needs to know the scope in which the object is created, and it
+//         must be acessible
+//     2. An extra property containing the variable's name in a string 
+//         would take up slightly more memory and make looping through 
+//         the object a bit more complicated ex. when using the object as a dictionary,
+//         one would have to be sure not to collect the unecessary information of the name
+//         property. Setting enumberability to false would most likely solve this issue.
+//Advantages:
+//     1. Objects can be deleted when passed to a function. Sometimes programmers don't 
+//         want to put objects in arrays for the sole purpose of being able to delete the 
+//         objects in a function with a loop ex. when there aren't too many objects or 
+//         when objects need to be referenced by names not indexes.
+//
+//Possible improvements:
+// 1.Being able to create and identify multiple named objects
+//
+// set variable names automatically with counter function attached to object ex. 
+//    setNameObject{i2: 0, i: 0, setNameBasedOnCounter:function(){ 
+//       this.i2 = this.i2 + 1; 
+//       if(this.i2 % 2 === 0){
+//           return String(this.i) + "restOfNameOfObject";
+//           this.i = this.i + 1; 
+//         } else {
+//             return String(this.i) + "restOfNameOfObject";
+//         }
+//    }
+//    window could be replaced by an object preferable to the programmer
+//    the names wouldn't increment until both functions are called, as to ensure they
+//    have the same names with which to identify.
+//
+//    window[setNameObject.setNameBaseOnCounter()] = new exClass(setNameObject.setNameBaseOnCounter()) ...
+//    Setting objects in array might be a better fit for objects meant to be grouped.
 
 
 function exampleClass(exProp1, exProp2, name){
@@ -16,14 +56,19 @@ exampleClass.prototype.alertProperties = function(){
 var firstTestObject = new exampleClass("firstProp", "secondProp", "firstTestObject");
 var secondTestObject = new exampleClass("firstProp", "secondProp", "secondTestObject");
 
-firstTestObject.alertProperties();
-secondTestObject.alertProperties();
+//alerts object
+alert(firstTestObject);
+alert(secondTestObject);
 
-// 
-for (var x in window){
-    if(window.hasOwnProperty(x)){
-        if(window[x].hasOwnProperty("exProp1")){
-        
-        }
-    }    
+// I know that the objects are part of the window in advance
+function deleteObjects(){
+    for (var i = 0; i < arguments.length; ++i){
+        window[arguments[i].name] = null;
+    }     
 }
+
+deleteObjects(firstTestObject, secondTestObject);
+
+//both objects are null
+alert(firstTestObject);
+alert(secondTestObject);
