@@ -1,0 +1,29 @@
+//A Style By Which Objects Can Be Passed And Deleted In A For Loop 
+//If it is useful and catches on, I would like to call it the can't touch this pattern
+
+
+function exampleClass(exProp1, exProp2, name){
+    this.exProp1 = exProp1;
+    this.exProp2 = exProp2;
+    this.name = name;
+}
+
+exampleClass.prototype.alertProperties = function(){
+    alert(this.exProp1);
+    alert(this.exProp2);
+};
+
+var firstTestObject = new exampleClass("firstProp", "secondProp", "firstTestObject");
+var secondTestObject = new exampleClass("firstProp", "secondProp", "secondTestObject");
+
+firstTestObject.alertProperties();
+secondTestObject.alertProperties();
+
+// 
+for (var x in window){
+    if(window.hasOwnProperty(x)){
+        if(window[x].hasOwnProperty("exProp1")){
+        
+        }
+    }    
+}
