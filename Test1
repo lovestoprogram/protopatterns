@@ -53,6 +53,8 @@ exampleClass.prototype.alertProperties = function(){
     alert(this.exProp2);
 };
 
+//Third properry contains a string containing the object's name which will be later used
+//    to identify the object. 
 var firstTestObject = new exampleClass("firstProp", "secondProp", "firstTestObject");
 var secondTestObject = new exampleClass("firstProp", "secondProp", "secondTestObject");
 
