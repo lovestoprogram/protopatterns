@@ -9,7 +9,7 @@
 //         
 //Disadvantages:
 //     1.The programmer needs to know the scope in which the object is created, and it
-//         must be acessible
+//         must be accessible
 //     2. An extra property containing the variable's name in a string 
 //         would take up slightly more memory and make looping through 
 //         the object a bit more complicated ex. when using the object as a dictionary,
